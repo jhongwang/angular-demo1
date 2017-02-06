@@ -1,0 +1,38 @@
+<h1 class="page-header">{{title}}</h1>
+<h2 ng-if="message">{{message}}</h2>
+<div class="list-group">
+  <a ng-repeat="item in selectData" href="#" class="list-group-item">
+    <span class="badge">{{item.rating.average}}</span>
+      <div class="media">
+		  <div class="media-left" href="#">
+		     <img ng-src="{{item.images.small}}" alt="{{item.title}}">
+		   </div> 
+		  <div class="media-body">
+		    <h4 class="media-heading">{{item.title}}</h4>
+		    <p>导演：<strong ng-repeat="d in item.directors">{{d.name}} <span ng-if="!$last">、</span></strong></p>
+		    <!-- 也可以这样用<p>导演：<strong ng-repeat="d in item.directors">{{d.name}}{{$last?'':'、'}}</strong></p> -->
+		    <!-- 也可以这样用<p>导演：<strong ng-repeat="d in item.directors">{{d.name + ($last?'':'、')}}</strong></p> -->
+		    <p>类型：<strong>{{item.genres.toString()}}</strong></p>
+		  </div>
+	</div>
+  </a>
+</div>
+<div ng-show="!loading">
+	<p>总共：{{totalCount}}条记录,第{{currentPage}}/{{totalPages}}页。</p>
+	<nav>
+	  <ul class="pager">
+	    <li ng-class="{disabled:currentPage<=1}"><a ng-click="go(currentPage-1)">上一页</a></li>
+	    <li ng-class="{disabled:currentPage>=totalPages}"><a ng-click="go(currentPage+1)">下一页</a></li>
+	  </ul>
+	</nav>
+</div>
+
+<div class="loading" ng-show="loading">
+	<div class="spinner">
+	  <div class="rect1"></div>
+	  <div class="rect2"></div>
+	  <div class="rect3"></div>
+	  <div class="rect4"></div>
+	  <div class="rect5"></div>
+	</div>	
+</div>
