@@ -21,7 +21,7 @@ angular.module('movieApp.movie_con',
   '$routeParams',
   'HttpService',
 	function($scope,$route,$routeParams,HttpService) {
-       var count = 4;
+       var count = 6;
        var page = parseInt($routeParams.page);
        var start = (page-1) * count;
        $scope.loading = true;
